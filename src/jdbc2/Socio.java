@@ -13,10 +13,10 @@ public class Socio {
     public Socio() {
     }
 
-    public Socio(int id, String nombre, int direccion) {
+    public Socio(int id, String nombre, int dni) {
         this.id = id;
         this.nombre = nombre;
-        this.dni = direccion;
+        this.dni = dni;
     }
     
     public int getDNI() {

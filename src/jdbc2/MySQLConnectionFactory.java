@@ -19,12 +19,7 @@ public class MySQLConnectionFactory implements ConnectionFactory {
     private final String user;
     private final String password;
 
-    public MySQLConnectionFactory(
-            String host,
-            String database,
-            int port,
-            String user, 
-            String password) {
+    public MySQLConnectionFactory( String host,    String database,   int port,   String user,  String password) {
         this.user = user;
         this.password = password;
         this.connectionString = 

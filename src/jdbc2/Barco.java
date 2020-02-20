@@ -14,15 +14,17 @@ public class Barco {
     private String nombre;
     private int amarre;
     private float cuota;
+    private int idDuenio;
     
     public Barco() {
     }
 
-    public Barco(int NumeroMatricula, String nombre, int amarre, float cuota) {
+    public Barco(int NumeroMatricula, String nombre, int amarre, float cuota,int idDuenio) {
         this.NumeroMatricula = NumeroMatricula;
         this.nombre = nombre;
         this.amarre = amarre;
         this.cuota=cuota;
+        this.idDuenio=idDuenio;
     }
 
     public int getNumeroMatricula() {
@@ -55,6 +57,14 @@ public class Barco {
 
     public void setCuota(float cuota) {
         this.cuota = cuota;
+    }
+
+    public int getIdDuenio() {
+        return idDuenio;
+    }
+
+    public void setIdDuenio(int idDuenio) {
+        this.idDuenio = idDuenio;
     }
     
     

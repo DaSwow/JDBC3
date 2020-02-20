@@ -9,16 +9,17 @@ public class Salida {
     private String horaSalida;
     private String fechaSalida;
     private String destino;
-    private int numeroMatricula;
+    private int matriculaBarco;
 
     public Salida() {
     }
 
-    public Salida(String horaSalida, String fechaSalida, String destino, int numeroMatricula) {
+    public Salida(String horaSalida, String fechaSalida, String destino, int matriculaBarco) {
         this.horaSalida = horaSalida;
         this.fechaSalida = fechaSalida;
         this.destino = destino;
-        this.numeroMatricula = numeroMatricula;
+        this.matriculaBarco=matriculaBarco;
+      
     }
 
     
@@ -50,15 +51,15 @@ public class Salida {
         this.destino = destino;
     }
 
-    public int getNumeroMatricula() {
-        return numeroMatricula;
+    public int getMatriculaBarco() {
+        return matriculaBarco;
     }
 
-    public void setNumeroMatricula(int numeroMatricula) {
-        this.numeroMatricula = numeroMatricula;
+    public void setMatriculaBarco(int matriculaBarco) {
+        this.matriculaBarco = matriculaBarco;
     }
-    
-    
+
+  
     
     
 }
