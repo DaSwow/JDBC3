@@ -137,6 +137,7 @@ public class Frame extends javax.swing.JFrame {
         botonGuardarNuevoSocio = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         campoIDNuevoSocio = new javax.swing.JTextField();
+        botonBorrarSeleccionado = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -353,6 +354,14 @@ public class Frame extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, -1));
         jPanel1.add(campoIDNuevoSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 160, -1));
 
+        botonBorrarSeleccionado.setText("Borrar Seleccionado");
+        botonBorrarSeleccionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBorrarSeleccionadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonBorrarSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -433,6 +442,7 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBuscarSocioActionPerformed
 
     private void botonGuardarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarSocioActionPerformed
+        if(tablaSocios.getSelectedRow()!=(-1)){
         try {
             Socio socio = new Socio(Integer.parseInt(campoIDSocio.getText()), (String) campoNombreSocio.getText(), Integer.parseInt(campoDNISocio.getText()));
             SocioDAO sociodao = new SocioDAOImp1(sqlconnection);
@@ -451,11 +461,12 @@ public class Frame extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        }
 
     }//GEN-LAST:event_botonGuardarSocioActionPerformed
 
     private void botonGuardarBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarBarcoActionPerformed
+        if(tablaBarcos.getSelectedRow()!=(-1)){
         try {
             Barco barco = new Barco(Integer.parseInt(campoMatriculaSalida.getText()),
                     (String) campoNombreBarco.getText(),
@@ -478,11 +489,12 @@ public class Frame extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        }
 
     }//GEN-LAST:event_botonGuardarBarcoActionPerformed
 
     private void botonGuardarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarSalidaActionPerformed
+        if(tablaSalidas.getSelectedRow()!=(-1)){
         try {
             Salida salida = new Salida((String) campoHoraSalida.getText(), (String) campoFechaSalida.getText(),
                     (String) campoDestinoSalida.getText(), Integer.parseInt(campoMatriculaSalida.getText()));
@@ -493,7 +505,7 @@ public class Frame extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        }
 
     }//GEN-LAST:event_botonGuardarSalidaActionPerformed
 
@@ -513,6 +525,27 @@ public class Frame extends javax.swing.JFrame {
         actualizarTablaSocios();
 
     }//GEN-LAST:event_botonGuardarNuevoSocioActionPerformed
+
+    private void botonBorrarSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarSeleccionadoActionPerformed
+      if(tablaSocios.getSelectedRow()!=(-1)){
+              Socio socio = new Socio(Integer.parseInt(campoIDSocio.getText()), (String) campoNombreSocio.getText(), 
+                      Integer.parseInt(campoDNISocio.getText()));
+        SocioDAO sociodao = new SocioDAOImp1(sqlconnection);
+        
+        try {
+            if (sociodao.find(socio.getId()) != null) {
+                sociodao.delete(socio.getId());
+            }else{
+              JOptionPane.showMessageDialog(null, "Este usuario no existe.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        actualizarTablaSocios();
+      
+      
+      }
+    }//GEN-LAST:event_botonBorrarSeleccionadoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -675,6 +708,7 @@ public class Frame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonBorrarSeleccionado;
     private javax.swing.JButton botonBuscarSocio;
     private javax.swing.JButton botonGuardarBarco;
     private javax.swing.JButton botonGuardarNuevoSocio;

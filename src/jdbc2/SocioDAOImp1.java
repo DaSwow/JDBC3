@@ -126,7 +126,15 @@ public class SocioDAOImp1 implements SocioDAO {
 
     @Override
     public void delete(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            final String sql= "DELETE FROM `barcos`.`socio`\n" +
+"WHERE idSocio="+id+";";
+
+        try (
+                Connection connection = this.connectionFactory.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql);) {
+                statement.executeUpdate(sql);
+        }
+       
     }
 
 }
